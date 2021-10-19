@@ -17,7 +17,7 @@ https://www.agh.edu.pl/
 ### naglowek 3
 ##### naglowek 5
 
-liczba=3
+liczba=101
 if liczba >100:
     print("duza liczba")
 else:
