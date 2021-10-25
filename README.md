@@ -22,3 +22,5 @@ if liczba >100:
     print("duza liczba")
 else:
     print("mala liczba")
+
+![Alt text](/laboratorium_2/pies.jpg)
