@@ -16,13 +16,14 @@ while True:
         if int(n) >= 0:
             break
         else:
-            raise
-    except:
-        print('Podana liczba nie jest liczba naturalna. Sproboj ponownie')
+            raise ValueError
+    except ValueError as e:
+        print("Podana wartosc nie jest liczba naturalna. Sproboj ponownie")
+        print(e)
 
 
 n_bin = bin(int(n))[2:]
-print('W systemie dziesietnym:', n_bin)
+print('W systemie binarnym:', n_bin)
 
 if czy_palindrom(n):
     print('Podana liczba jest palindromem w systemie dziesietnym')
