@@ -13,12 +13,12 @@ def czy_palindrom(liczba):
 while True:
     n = input('Podaj liczbe naturalna:')
     try:
-        if int(n) >= 0:
-            break
+        if int(n) < 0:
+            print("Podana liczba nie jest liczba naturalna. Sproboj ponownie")
         else:
-            raise ValueError
+            break
     except ValueError as e:
-        print("Podana wartosc nie jest liczba naturalna. Sproboj ponownie")
+        print("Podana wartosc nie jest liczba. Sproboj ponownie")
         print(e)
 
 
