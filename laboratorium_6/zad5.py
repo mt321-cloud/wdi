@@ -10,16 +10,21 @@ def czy_palindrom(liczba):
     return True
 
 
+class NegativeValue(Exception):
+    pass
+
+
 while True:
     n = input('Podaj liczbe naturalna:')
     try:
         if int(n) < 0:
-            print("Podana liczba nie jest liczba naturalna. Sproboj ponownie")
+            raise NegativeValue
         else:
             break
-    except ValueError as e:
+    except ValueError:
         print("Podana wartosc nie jest liczba. Sproboj ponownie")
-        print(e)
+    except NegativeValue:
+        print("Podana liczba nie jest liczba naturalna. Sprobuj ponownie")
 
 
 n_bin = bin(int(n))[2:]
