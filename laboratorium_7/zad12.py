@@ -11,6 +11,8 @@ if d == '*' or d == '/':
     raise ValueError("Nieobslugiwana operacja arytmetyczna")
 
 czy_wynik_ujemny = False
+
+# sprawdzamy czy pierwsza liczba jest mniejsza od drugiej
 if int(m) < int(n):
     m, n = n, m
     czy_wynik_ujemny = True
@@ -21,7 +23,6 @@ n_cyfry = [int(c) for c in n]
 r = abs(len(m_cyfry)-len(n_cyfry))
 
 # dopisanie zer z przodu krótszej liczby
-
 if len(m_cyfry) > len(n_cyfry):
     for x in range(r):
         n_cyfry.insert(0, 0)
@@ -29,9 +30,9 @@ else:
     for x in range(r):
         m_cyfry.insert(0, 0)
 
-#print(m_cyfry, n_cyfry)
+# print(m_cyfry, n_cyfry)
 
-wynik_cyfry = []
+wynik = ''
 
 if d == '+':
     i = len(m_cyfry)-1
@@ -45,10 +46,10 @@ if d == '+':
             czy_nadwyzka = True
         else:
             czy_nadwyzka = False
-        wynik_cyfry.insert(0, suma)
+        wynik = str(suma)+wynik
         i -= 1
     if czy_nadwyzka:
-        wynik_cyfry.insert(0, 1)
+        wynik = '1'+wynik
 
 elif d == '-':
     i = len(m_cyfry)-1
@@ -62,15 +63,9 @@ elif d == '-':
             czy_pozyczka = True
         else:
             czy_pozyczka = False
-        wynik_cyfry.insert(0, roznica)
+        wynik = str(roznica)+wynik
         i -= 1
-
-if czy_wynik_ujemny:
-    wynik = '-'
-else:
-    wynik = ''
-for cyfra in wynik_cyfry:
-    wynik += str(cyfra)
-wynik = int(wynik)
+    if czy_wynik_ujemny:
+        wynik = '-'+wynik
 
 print('Wynik działania:', wynik)
