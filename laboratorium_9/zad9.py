@@ -31,13 +31,24 @@ def najw_iloraz(tab):
             suma_k += tab[j][i]
         sumy_wierszy.append(suma_w)
         sumy_kolumn.append(suma_k)
+    #sumy_wierszy = [0, 0, 0, 0]
     print('sumy kolejnych wierszy:', sumy_wierszy)
     print('sumy kolejnych kolumn:', sumy_kolumn)
+
+    # iloraz=suma kolumny/suma wiersza
+
+    czy_tab_zerowa = True
+    for l in sumy_wierszy:
+        if l != 0:
+            czy_tab_zerowa = False
+            break
+    if czy_tab_zerowa:
+        raise ValueError("Nie istnieje taki iloraz")
 
     min_w = sumy_wierszy[0]
     max_k = sumy_kolumn[0]
     for x in range(1, len(sumy_wierszy)):
-        if sumy_wierszy[x] < min_w:
+        if sumy_wierszy[x] < min_w and sumy_wierszy[x] != 0:
             min_w = sumy_wierszy[x]
         if sumy_kolumn[x] > max_k:
             max_k = sumy_kolumn[x]

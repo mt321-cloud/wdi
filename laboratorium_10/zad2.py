@@ -29,8 +29,16 @@ def arrange_3d(tab):
                 liczby.append(liczba)
                 wsp.append(str(liczba)+': ' +
                            '('+str(ind_w)+','+str(ind_k)+') -> ')
-        print(f'liczby z plaszczyzny {ind_p}:')
-        print(liczby)
+        print(f'liczby z plaszczyzny {ind_p}:', liczby)
+
+        liczby_nier = liczby.copy()
+
+        # sortowanie liczb rosnaco
+        for a in range(len(liczby)-1):
+            for b in range(len(liczby)-1):
+                if liczby[b] > liczby[b+1]:
+                    liczby[b], liczby[b+1] = liczby[b+1], liczby[b]
+        print('w kolejnosci rosnacej:', liczby)
 
         # ustawienie liczb po spirali
         spirala = plaszczyzna.copy()
@@ -43,25 +51,33 @@ def arrange_3d(tab):
             # wypelnienie gornego wiersza
             while y < rozm-wciecie:
                 spirala[x][y] = liczby[i]
-                wsp[i] += '('+str(x)+','+str(y)+')\n'
+                nr_wiersza = liczby_nier.index(liczby[i])
+                wsp[nr_wiersza] += '('+str(x)+','+str(y)+')\n'
+                liczby_nier[nr_wiersza] = 'x'
                 i += 1
                 y += 1
             # wypelnienie prawej kolumny
             while x < rozm-wciecie:
                 spirala[x][y] = liczby[i]
-                wsp[i] += '('+str(x)+','+str(y)+')\n'
+                nr_wiersza = liczby_nier.index(liczby[i])
+                wsp[nr_wiersza] += '('+str(x)+','+str(y)+')\n'
+                liczby_nier[nr_wiersza] = 'x'
                 i += 1
                 x += 1
             # wypelnienie dolnego wiersza
             while y > wciecie-1:
                 spirala[x][y] = liczby[i]
-                wsp[i] += '('+str(x)+','+str(y)+')\n'
+                nr_wiersza = liczby_nier.index(liczby[i])
+                wsp[nr_wiersza] += '('+str(x)+','+str(y)+')\n'
+                liczby_nier[nr_wiersza] = 'x'
                 i += 1
                 y -= 1
             # wypelnienie lewej kolumny
             while x > wciecie-1:
                 spirala[x][y] = liczby[i]
-                wsp[i] += '('+str(x)+','+str(y)+')\n'
+                nr_wiersza = liczby_nier.index(liczby[i])
+                wsp[nr_wiersza] += '('+str(x)+','+str(y)+')\n'
+                liczby_nier[nr_wiersza] = 'x'
                 i += 1
                 x -= 1
             # zmniejszenie rozmiaru 'pierscienia'
@@ -72,8 +88,9 @@ def arrange_3d(tab):
         # wypelnienie srodkowego pola
         if rozm % 2 != 0:
             spirala[x][y] = liczby[-1]
-            wsp[i] += '('+str(x)+','+str(y)+')\n'
-
+            nr_wiersza = liczby_nier.index(liczby[i])
+            wsp[nr_wiersza] += '('+str(x)+','+str(y)+')\n'
+            liczby_nier[nr_wiersza] = 'x'
         print(f'spirala {ind_p}:')
         for w in spirala:
             print(w)
