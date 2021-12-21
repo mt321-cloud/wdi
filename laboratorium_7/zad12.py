@@ -68,4 +68,4 @@ elif d == '-':
     if czy_wynik_ujemny:
         wynik = '-'+wynik
 
-print('Wynik działania:', wynik)
+print('Wynik działania:', int(wynik))
