@@ -10,6 +10,9 @@ class InicjacjaGry:
         for i in range(int(n)):
             wsp = (random.randrange(0, s-1),
                    random.randrange(0, s-1))
+            while wsp in self.dane:
+                wsp = (random.randrange(0, s-1),
+                       random.randrange(0, s-1))
             self.dane.append(wsp)
         print('Wspolrzedne skoczkow:', self.dane)
         print('')
@@ -29,8 +32,13 @@ class Szachownica:
         self.plansza = plansza
 
     def wypisz_szachownice(self):
-        for wiersz in self.plansza:
-            r = ''
+        w_ind = ''
+        for x in range(len(self.plansza)):
+            w_ind += str(x)+' '
+        print('   '+w_ind)
+        print()
+        for ind, wiersz in enumerate(self.plansza):
+            r = str(ind)+"  "
             for pole in wiersz:
                 r += pole+' '
             print(r)
