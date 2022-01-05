@@ -38,9 +38,9 @@ class Szachownica:
         print('   '+w_ind)
         print()
         for ind, wiersz in enumerate(self.plansza):
-            r = str(ind)+"  "
+            r = str(ind) + "  "
             for pole in wiersz:
-                r += pole+' '
+                r += pole + ' '
             print(r)
 
     def znajdz_szach(self):
